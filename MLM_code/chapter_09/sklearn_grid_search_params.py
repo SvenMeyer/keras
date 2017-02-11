@@ -1,20 +1,34 @@
 # MLP for Pima Indians Dataset with grid search via sklearn
+import numpy
+
+processor = 'cpu'
+# processor = 'gpu'
+
+import theano.sandbox.cuda
+theano.sandbox.cuda.use(processor)
+
+import theano
+print("theano version     = ", theano.__version__)
+
+from theano import function, config, shared
+import theano.tensor as T
+vlen = 10 * 30 * 768
+rng = numpy.random.RandomState(22)
+x = theano.shared(numpy.asarray(rng.rand(vlen), config.floatX))
+f = theano.function([], T.exp(x))
+print(f.maker.fgraph.toposort())
+
 from keras.models import Sequential
 from keras.layers import Dense
 from keras.wrappers.scikit_learn import KerasClassifier
 from sklearn.model_selection import GridSearchCV
-import numpy
+
 import time
 
-# Fix for bug in keras 0.12.1
-# http://stackoverflow.com/questions/41796618/python-keras-cross-val-score-error/41841066#41841066
-from keras.wrappers.scikit_learn import BaseWrapper
-import copy
-def custom_get_params(self, **params):
-    res = copy.deepcopy(self.sk_params)
-    res.update({'build_fn': self.build_fn})
-    return res
-BaseWrapper.get_params = custom_get_params
+import keras
+print("keras version      = ", keras.__version__)
+
+# print("tensorflow version = ", tensorflow.__version__)
 
 # Function to create model, required for KerasClassifier
 def create_model(optimizer='rmsprop', init='glorot_uniform'):
@@ -42,8 +56,14 @@ optimizers = ['rmsprop', 'adam']
 init = ['glorot_uniform', 'normal', 'uniform']
 epochs = [400, 500, 600]
 batches = [10, 20, 30]
+epochs = [100]
+batches = [5]
 param_grid = dict(optimizer=optimizers, nb_epoch=epochs, batch_size=batches, init=init)
-grid = GridSearchCV(estimator=model, param_grid=param_grid, n_jobs=8)
+
+n_jobs = 8 if processor == 'cpu' else 1
+print("processor = ", processor)
+print("n_jobs    = ", n_jobs)
+grid = GridSearchCV(estimator=model, param_grid=param_grid, n_jobs=n_jobs)
 
 print("start model.fit ..."),
 start = time.time()
@@ -77,3 +97,9 @@ for mean, stdev, param in zip(means, stds, params):
 # batches = [10, 20, 30]
 # DONE in  181.38080048561096 sec
 # Best: 0.761719 using {'nb_epoch': 600, 'batch_size': 10, 'optimizer': 'adam', 'init': 'uniform'}
+# DONE in  183.35850596427917 sec
+# Best: 0.765625 using {'optimizer': 'adam', 'batch_size': 30, 'nb_epoch': 600, 'init': 'uniform'}
+
+# keras 1.2.2
+# DONE in  182.50592589378357 sec
+# Best: 0.761719 using {'batch_size': 10, 'init': 'uniform', 'nb_epoch': 600, 'optimizer': 'adam'}
