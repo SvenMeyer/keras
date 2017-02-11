@@ -1,0 +1,888 @@
+/home/sumeyer/anaconda3/envs/tfGPU/bin/python /home/sumeyer/PycharmProjects/keras/MLM_code/chapter_09/sklearn_cross_validation.py
+Using Theano backend.
+WARNING (theano.sandbox.cuda): The cuda backend is deprecated and will be removed in the next release.  Please switch to the gpuarray backend. You can get more information about how to switch at this URL:
+ https://github.com/Theano/Theano/wiki/Converting-to-the-new-gpu-back-end%28gpuarray%29
+
+Using gpu device 0: GeForce GTX 1080 (CNMeM is disabled, cuDNN 5105)
+/home/sumeyer/anaconda3/envs/tfGPU/lib/python3.5/site-packages/numexpr/cpuinfo.py:42: UserWarning: [Errno 2] No such file or directory: 'uname'
+  warnings.warn(str(e), UserWarning, stacklevel=stacklevel)
+start model.fit ...
+Error when trying to find the memory information on the GPU: initialization error
+Error allocating 384 bytes of device memory (initialization error). Driver report 0 bytes free and 0 bytes total 
+Error when trying to find the memory information on the GPU: initialization error
+Error allocating 384 bytes of device memory (initialization error). Driver report 0 bytes free and 0 bytes total 
+Error when trying to find the memory information on the GPU: initialization error
+Error allocating 384 bytes of device memory (initialization error). Driver report 0 bytes free and 0 bytes total 
+Error when trying to find the memory information on the GPU: initialization error
+Error allocating 384 bytes of device memory (initialization error). Driver report 0 bytes free and 0 bytes total 
+Error when trying to find the memory information on the GPU: initialization error
+Error allocating 384 bytes of device memory (initialization error). Driver report 0 bytes free and 0 bytes total 
+Error when trying to find the memory information on the GPU: initialization error
+Error allocating 384 bytes of device memory (initialization error). Driver report 0 bytes free and 0 bytes total 
+Error when trying to find the memory information on the GPU: initialization error
+Error allocating 384 bytes of device memory (initialization error). Driver report 0 bytes free and 0 bytes total 
+Error when trying to find the memory information on the GPU: initialization error
+Error allocating 384 bytes of device memory (initialization error). Driver report 0 bytes free and 0 bytes total 
+multiprocessing.pool.RemoteTraceback: 
+"""
+Traceback (most recent call last):
+  File "/home/sumeyer/anaconda3/envs/tfGPU/lib/python3.5/site-packages/sklearn/externals/joblib/_parallel_backends.py", line 344, in __call__
+    return self.func(*args, **kwargs)
+  File "/home/sumeyer/anaconda3/envs/tfGPU/lib/python3.5/site-packages/sklearn/externals/joblib/parallel.py", line 131, in __call__
+    return [func(*args, **kwargs) for func, args, kwargs in self.items]
+  File "/home/sumeyer/anaconda3/envs/tfGPU/lib/python3.5/site-packages/sklearn/externals/joblib/parallel.py", line 131, in <listcomp>
+    return [func(*args, **kwargs) for func, args, kwargs in self.items]
+  File "/home/sumeyer/anaconda3/envs/tfGPU/lib/python3.5/site-packages/sklearn/model_selection/_validation.py", line 238, in _fit_and_score
+    estimator.fit(X_train, y_train, **fit_params)
+  File "/home/sumeyer/anaconda3/envs/tfGPU/lib/python3.5/site-packages/keras/wrappers/scikit_learn.py", line 134, in fit
+    self.model = self.build_fn(**self.filter_sk_params(self.build_fn))
+  File "/home/sumeyer/PycharmProjects/keras/MLM_code/chapter_09/sklearn_cross_validation.py", line 25, in create_model
+    model.add(Dense(12, input_dim=8, init='uniform', activation='relu'))
+  File "/home/sumeyer/anaconda3/envs/tfGPU/lib/python3.5/site-packages/keras/models.py", line 299, in add
+    layer.create_input_layer(batch_input_shape, input_dtype)
+  File "/home/sumeyer/anaconda3/envs/tfGPU/lib/python3.5/site-packages/keras/engine/topology.py", line 401, in create_input_layer
+    self(x)
+  File "/home/sumeyer/anaconda3/envs/tfGPU/lib/python3.5/site-packages/keras/engine/topology.py", line 546, in __call__
+    self.build(input_shapes[0])
+  File "/home/sumeyer/anaconda3/envs/tfGPU/lib/python3.5/site-packages/keras/layers/core.py", line 798, in build
+    constraint=self.W_constraint)
+  File "/home/sumeyer/anaconda3/envs/tfGPU/lib/python3.5/site-packages/keras/engine/topology.py", line 418, in add_weight
+    weight = initializer(shape, name=name)
+  File "/home/sumeyer/anaconda3/envs/tfGPU/lib/python3.5/site-packages/keras/initializations.py", line 33, in uniform
+    return K.random_uniform_variable(shape, -scale, scale, name=name)
+  File "/home/sumeyer/anaconda3/envs/tfGPU/lib/python3.5/site-packages/keras/backend/theano_backend.py", line 189, in random_uniform_variable
+    dtype=dtype, name=name)
+  File "/home/sumeyer/anaconda3/envs/tfGPU/lib/python3.5/site-packages/keras/backend/theano_backend.py", line 87, in variable
+    variable = theano.shared(value=value, name=name, strict=False)
+  File "/home/sumeyer/.local/lib/python3.5/site-packages/theano/compile/sharedvalue.py", line 272, in shared
+    allow_downcast=allow_downcast, **kwargs)
+  File "/home/sumeyer/.local/lib/python3.5/site-packages/theano/sandbox/cuda/var.py", line 188, in float32_shared_constructor
+    deviceval = type_support_filter(value, type.broadcastable, False, None)
+MemoryError: ('Error allocating 384 bytes of device memory (initialization error).', "you might consider using 'theano.shared(..., borrow=True)'")
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/sumeyer/anaconda3/envs/tfGPU/lib/python3.5/multiprocessing/pool.py", line 119, in worker
+    result = (True, func(*args, **kwds))
+  File "/home/sumeyer/anaconda3/envs/tfGPU/lib/python3.5/site-packages/sklearn/externals/joblib/_parallel_backends.py", line 353, in __call__
+    raise TransportableException(text, e_type)
+sklearn.externals.joblib.my_exceptions.TransportableException: TransportableException
+___________________________________________________________________________
+MemoryError                                        Wed Feb  1 19:51:32 2017
+PID: 20580      Python 3.5.2: /home/sumeyer/anaconda3/envs/tfGPU/bin/python
+...........................................................................
+/home/sumeyer/anaconda3/envs/tfGPU/lib/python3.5/site-packages/sklearn/externals/joblib/parallel.py in __call__(self=<sklearn.externals.joblib.parallel.BatchedCalls object>)
+    126     def __init__(self, iterator_slice):
+    127         self.items = list(iterator_slice)
+    128         self._size = len(self.items)
+    129 
+    130     def __call__(self):
+--> 131         return [func(*args, **kwargs) for func, args, kwargs in self.items]
+        self.items = [(<function _fit_and_score>, (<keras.wrappers.scikit_learn.KerasClassifier object>, array([[   6.   ,  148.   ,   72.   , ...,   33.... ,   70.   , ...,   30.4  ,    0.315,   23.   ]]), array([ 1.,  0.,  1.,  0.,  1.,  0.,  1.,  0.,  ...0.,  1.,  0.,  1.,  0.,  0.,  0.,  0.,  1.,  0.]), <function _passthrough_scorer>, array([  0,   1,   2,   3,   4,   5,   6,   7,  ...,
+       757, 758, 759, 760, 762, 763, 766, 767]), array([ 11,  19,  24,  31,  32,  37,  59,  64,  ..., 723, 736,
+       740, 747, 749, 761, 764, 765]), 0, None, None), {})]
+    132 
+    133     def __len__(self):
+    134         return self._size
+    135 
+
+...........................................................................
+/home/sumeyer/anaconda3/envs/tfGPU/lib/python3.5/site-packages/sklearn/externals/joblib/parallel.py in <listcomp>(.0=<list_iterator object>)
+    126     def __init__(self, iterator_slice):
+    127         self.items = list(iterator_slice)
+    128         self._size = len(self.items)
+    129 
+    130     def __call__(self):
+--> 131         return [func(*args, **kwargs) for func, args, kwargs in self.items]
+        func = <function _fit_and_score>
+        args = (<keras.wrappers.scikit_learn.KerasClassifier object>, array([[   6.   ,  148.   ,   72.   , ...,   33.... ,   70.   , ...,   30.4  ,    0.315,   23.   ]]), array([ 1.,  0.,  1.,  0.,  1.,  0.,  1.,  0.,  ...0.,  1.,  0.,  1.,  0.,  0.,  0.,  0.,  1.,  0.]), <function _passthrough_scorer>, array([  0,   1,   2,   3,   4,   5,   6,   7,  ...,
+       757, 758, 759, 760, 762, 763, 766, 767]), array([ 11,  19,  24,  31,  32,  37,  59,  64,  ..., 723, 736,
+       740, 747, 749, 761, 764, 765]), 0, None, None)
+        kwargs = {}
+    132 
+    133     def __len__(self):
+    134         return self._size
+    135 
+
+...........................................................................
+/home/sumeyer/anaconda3/envs/tfGPU/lib/python3.5/site-packages/sklearn/model_selection/_validation.py in _fit_and_score(estimator=<keras.wrappers.scikit_learn.KerasClassifier object>, X=array([[   6.   ,  148.   ,   72.   , ...,   33.... ,   70.   , ...,   30.4  ,    0.315,   23.   ]]), y=array([ 1.,  0.,  1.,  0.,  1.,  0.,  1.,  0.,  ...0.,  1.,  0.,  1.,  0.,  0.,  0.,  0.,  1.,  0.]), scorer=<function _passthrough_scorer>, train=array([  0,   1,   2,   3,   4,   5,   6,   7,  ...,
+       757, 758, 759, 760, 762, 763, 766, 767]), test=array([ 11,  19,  24,  31,  32,  37,  59,  64,  ..., 723, 736,
+       740, 747, 749, 761, 764, 765]), verbose=0, parameters=None, fit_params={}, return_train_score=False, return_parameters=False, return_n_test_samples=False, return_times=False, error_score='raise')
+    233 
+    234     try:
+    235         if y_train is None:
+    236             estimator.fit(X_train, **fit_params)
+    237         else:
+--> 238             estimator.fit(X_train, y_train, **fit_params)
+        estimator.fit = <bound method BaseWrapper.fit of <keras.wrappers.scikit_learn.KerasClassifier object>>
+        X_train = array([[  6.00000000e+00,   1.48000000e+02,   7....000000e+01,   3.15000000e-01,   2.30000000e+01]])
+        y_train = array([ 1.,  0.,  1.,  0.,  1.,  0.,  1.,  0.,  ...,
+        1.,  0.,  1.,  0.,  0.,  0.,  1.,  0.])
+        fit_params = {}
+    239 
+    240     except Exception as e:
+    241         # Note fit time as time until error
+    242         fit_time = time.time() - start_time
+
+...........................................................................
+/home/sumeyer/anaconda3/envs/tfGPU/lib/python3.5/site-packages/keras/wrappers/scikit_learn.py in fit(self=<keras.wrappers.scikit_learn.KerasClassifier object>, x=array([[  6.00000000e+00,   1.48000000e+02,   7....000000e+01,   3.15000000e-01,   2.30000000e+01]]), y=array([ 1.,  0.,  1.,  0.,  1.,  0.,  1.,  0.,  ...,
+        1.,  0.,  1.,  0.,  0.,  0.,  1.,  0.]), **kwargs={})
+    129         elif (not isinstance(self.build_fn, types.FunctionType) and
+    130               not isinstance(self.build_fn, types.MethodType)):
+    131             self.model = self.build_fn(
+    132                 **self.filter_sk_params(self.build_fn.__call__))
+    133         else:
+--> 134             self.model = self.build_fn(**self.filter_sk_params(self.build_fn))
+        self.model = undefined
+        self.build_fn = <function create_model>
+        self.filter_sk_params = <bound method BaseWrapper.filter_sk_params of <keras.wrappers.scikit_learn.KerasClassifier object>>
+    135 
+    136         loss_name = self.model.loss
+    137         if hasattr(loss_name, '__name__'):
+    138             loss_name = loss_name.__name__
+
+...........................................................................
+/home/sumeyer/PycharmProjects/keras/MLM_code/chapter_09/sklearn_cross_validation.py in create_model()
+     20 
+     21 # Function to create model, required for KerasClassifier
+     22 def create_model():
+     23 	# create model
+     24 	model = Sequential()
+---> 25 	model.add(Dense(12, input_dim=8, init='uniform', activation='relu'))
+        model.add = <bound method Sequential.add of <keras.models.Sequential object>>
+     26 	model.add(Dense(8, init='uniform', activation='relu'))
+     27 	model.add(Dense(1, init='uniform', activation='sigmoid'))
+     28 	# Compile model
+     29 	model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
+
+...........................................................................
+/home/sumeyer/anaconda3/envs/tfGPU/lib/python3.5/site-packages/keras/models.py in add(self=<keras.models.Sequential object>, layer=<keras.layers.core.Dense object>)
+    294                 batch_input_shape = layer.batch_input_shape
+    295                 if hasattr(layer, 'input_dtype'):
+    296                     input_dtype = layer.input_dtype
+    297                 else:
+    298                     input_dtype = None
+--> 299                 layer.create_input_layer(batch_input_shape, input_dtype)
+        layer.create_input_layer = <bound method Layer.create_input_layer of <keras.layers.core.Dense object>>
+        batch_input_shape = (None, 8)
+        input_dtype = 'float32'
+    300 
+    301             if len(layer.inbound_nodes) != 1:
+    302                 raise ValueError('A layer added to a Sequential model must '
+    303                                  'not already be connected somewhere else. '
+
+...........................................................................
+/home/sumeyer/anaconda3/envs/tfGPU/lib/python3.5/site-packages/keras/engine/topology.py in create_input_layer(self=<keras.layers.core.Dense object>, batch_input_shape=(None, 8), input_dtype='float32', name='dense_input_1')
+    396         x = Input(batch_shape=batch_input_shape,
+    397                   dtype=input_dtype, name=name)
+    398         # This will build the current layer
+    399         # and create the node connecting the current layer
+    400         # to the input layer we just created.
+--> 401         self(x)
+        self = <keras.layers.core.Dense object>
+        x = dense_input_1
+    402 
+    403     def add_weight(self, shape, initializer, name=None,
+    404                    trainable=True,
+    405                    regularizer=None,
+
+...........................................................................
+/home/sumeyer/anaconda3/envs/tfGPU/lib/python3.5/site-packages/keras/engine/topology.py in __call__(self=<keras.layers.core.Dense object>, x=dense_input_1, mask=None)
+    541                                      ' about its expected input shape, '
+    542                                      'and thus cannot be built. '
+    543                                      'You can build it manually via: '
+    544                                      '`layer.build(batch_input_shape)`')
+    545             if len(input_shapes) == 1:
+--> 546                 self.build(input_shapes[0])
+        self.build = <bound method Dense.build of <keras.layers.core.Dense object>>
+        input_shapes = [(None, 8)]
+    547             else:
+    548                 self.build(input_shapes)
+    549             self.built = True
+    550 
+
+...........................................................................
+/home/sumeyer/anaconda3/envs/tfGPU/lib/python3.5/site-packages/keras/layers/core.py in build(self=<keras.layers.core.Dense object>, input_shape=(None, 8))
+    793 
+    794         self.W = self.add_weight((input_dim, self.output_dim),
+    795                                  initializer=self.init,
+    796                                  name='{}_W'.format(self.name),
+    797                                  regularizer=self.W_regularizer,
+--> 798                                  constraint=self.W_constraint)
+        self.W_constraint = None
+    799         if self.bias:
+    800             self.b = self.add_weight((self.output_dim,),
+    801                                      initializer='zero',
+    802                                      name='{}_b'.format(self.name),
+
+...........................................................................
+/home/sumeyer/anaconda3/envs/tfGPU/lib/python3.5/site-packages/keras/engine/topology.py in add_weight(self=<keras.layers.core.Dense object>, shape=(8, 12), initializer=<function uniform>, name='dense_1_W', trainable=True, regularizer=None, constraint=None)
+    413                 be trained via backprop or not (assuming
+    414                 that the layer itself is also trainable).
+    415             regularizer: An optional Regularizer instance.
+    416         """
+    417         initializer = initializations.get(initializer)
+--> 418         weight = initializer(shape, name=name)
+        weight = undefined
+        initializer = <function uniform>
+        shape = (8, 12)
+        name = 'dense_1_W'
+    419         if regularizer is not None:
+    420             self.add_loss(regularizer(weight))
+    421         if constraint is not None:
+    422             self.constraints[weight] = constraint
+
+...........................................................................
+/home/sumeyer/anaconda3/envs/tfGPU/lib/python3.5/site-packages/keras/initializations.py in uniform(shape=(8, 12), scale=0.05, name='dense_1_W', dim_ordering='th')
+     28         fan_out = np.sqrt(np.prod(shape))
+     29     return fan_in, fan_out
+     30 
+     31 
+     32 def uniform(shape, scale=0.05, name=None, dim_ordering='th'):
+---> 33     return K.random_uniform_variable(shape, -scale, scale, name=name)
+        shape = (8, 12)
+        scale = 0.05
+        name = 'dense_1_W'
+     34 
+     35 
+     36 def normal(shape, scale=0.05, name=None, dim_ordering='th'):
+     37     return K.random_normal_variable(shape, 0.0, scale, name=name)
+
+...........................................................................
+/home/sumeyer/anaconda3/envs/tfGPU/lib/python3.5/site-packages/keras/backend/theano_backend.py in random_uniform_variable(shape=(8, 12), low=-0.05, high=0.05, dtype=None, name='dense_1_W')
+    184     return T.zeros_like(x, dtype=dtype)
+    185 
+    186 
+    187 def random_uniform_variable(shape, low, high, dtype=None, name=None):
+    188     return variable(np.random.uniform(low=low, high=high, size=shape),
+--> 189                     dtype=dtype, name=name)
+        dtype = None
+        name = 'dense_1_W'
+    190 
+    191 
+    192 def random_normal_variable(shape, mean, scale, dtype=None, name=None):
+    193     return variable(np.random.normal(loc=0.0, scale=scale, size=shape),
+
+...........................................................................
+/home/sumeyer/anaconda3/envs/tfGPU/lib/python3.5/site-packages/keras/backend/theano_backend.py in variable(value=array([[ -4.23691720e-02,   2.79918797e-02,  -6.....23436933e-02,  -2.42355000e-03]], dtype=float32), dtype='float32', name='dense_1_W')
+     82     if hasattr(value, 'tocoo'):
+     83         _assert_sparse_module()
+     84         variable = th_sparse_module.as_sparse_variable(value)
+     85     else:
+     86         value = np.asarray(value, dtype=dtype)
+---> 87         variable = theano.shared(value=value, name=name, strict=False)
+        variable = undefined
+        value = array([[ -4.23691720e-02,   2.79918797e-02,  -6.....23436933e-02,  -2.42355000e-03]], dtype=float32)
+        name = 'dense_1_W'
+     88     variable._keras_shape = value.shape
+     89     variable._uses_learning_phase = False
+     90     return variable
+     91 
+
+...........................................................................
+/home/sumeyer/.local/lib/python3.5/site-packages/theano/compile/sharedvalue.py in shared(value=array([[ -4.23691720e-02,   2.79918797e-02,  -6.....23436933e-02,  -2.42355000e-03]], dtype=float32), name='dense_1_W', strict=False, allow_downcast=None, **kwargs={})
+    267                             "values and not symbolic variables.")
+    268 
+    269         for ctor in reversed(shared.constructors):
+    270             try:
+    271                 var = ctor(value, name=name, strict=strict,
+--> 272                            allow_downcast=allow_downcast, **kwargs)
+        allow_downcast = None
+        kwargs = {}
+    273                 utils.add_tag_trace(var)
+    274                 return var
+    275             except TypeError:
+    276                 continue
+
+...........................................................................
+/home/sumeyer/.local/lib/python3.5/site-packages/theano/sandbox/cuda/var.py in float32_shared_constructor(value=array([[ -4.23691720e-02,   2.79918797e-02,  -6.....23436933e-02,  -2.42355000e-03]], dtype=float32), name='dense_1_W', strict=False, allow_downcast=None, borrow=False, broadcastable=(False, False), target='gpu')
+    183         else:
+    184             deviceval = value.copy()
+    185     else:
+    186         # type.broadcastable is guaranteed to be a tuple, which this next
+    187         # function requires
+--> 188         deviceval = type_support_filter(value, type.broadcastable, False, None)
+        deviceval = undefined
+        value = array([[ -4.23691720e-02,   2.79918797e-02,  -6.....23436933e-02,  -2.42355000e-03]], dtype=float32)
+        type.broadcastable = (False, False)
+    189 
+    190     try:
+    191         rval = CudaNdarraySharedVariable(type=type, value=deviceval, name=name, strict=strict)
+    192     except Exception as e:
+
+MemoryError: ('Error allocating 384 bytes of device memory (initialization error).', "you might consider using 'theano.shared(..., borrow=True)'")
+___________________________________________________________________________
+"""
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/sumeyer/anaconda3/envs/tfGPU/lib/python3.5/site-packages/sklearn/externals/joblib/parallel.py", line 682, in retrieve
+    self._output.extend(job.get(timeout=self.timeout))
+  File "/home/sumeyer/anaconda3/envs/tfGPU/lib/python3.5/multiprocessing/pool.py", line 608, in get
+    raise self._value
+sklearn.externals.joblib.my_exceptions.TransportableException: TransportableException
+___________________________________________________________________________
+MemoryError                                        Wed Feb  1 19:51:32 2017
+PID: 20580      Python 3.5.2: /home/sumeyer/anaconda3/envs/tfGPU/bin/python
+...........................................................................
+/home/sumeyer/anaconda3/envs/tfGPU/lib/python3.5/site-packages/sklearn/externals/joblib/parallel.py in __call__(self=<sklearn.externals.joblib.parallel.BatchedCalls object>)
+    126     def __init__(self, iterator_slice):
+    127         self.items = list(iterator_slice)
+    128         self._size = len(self.items)
+    129 
+    130     def __call__(self):
+--> 131         return [func(*args, **kwargs) for func, args, kwargs in self.items]
+        self.items = [(<function _fit_and_score>, (<keras.wrappers.scikit_learn.KerasClassifier object>, array([[   6.   ,  148.   ,   72.   , ...,   33.... ,   70.   , ...,   30.4  ,    0.315,   23.   ]]), array([ 1.,  0.,  1.,  0.,  1.,  0.,  1.,  0.,  ...0.,  1.,  0.,  1.,  0.,  0.,  0.,  0.,  1.,  0.]), <function _passthrough_scorer>, array([  0,   1,   2,   3,   4,   5,   6,   7,  ...,
+       757, 758, 759, 760, 762, 763, 766, 767]), array([ 11,  19,  24,  31,  32,  37,  59,  64,  ..., 723, 736,
+       740, 747, 749, 761, 764, 765]), 0, None, None), {})]
+    132 
+    133     def __len__(self):
+    134         return self._size
+    135 
+
+...........................................................................
+/home/sumeyer/anaconda3/envs/tfGPU/lib/python3.5/site-packages/sklearn/externals/joblib/parallel.py in <listcomp>(.0=<list_iterator object>)
+    126     def __init__(self, iterator_slice):
+    127         self.items = list(iterator_slice)
+    128         self._size = len(self.items)
+    129 
+    130     def __call__(self):
+--> 131         return [func(*args, **kwargs) for func, args, kwargs in self.items]
+        func = <function _fit_and_score>
+        args = (<keras.wrappers.scikit_learn.KerasClassifier object>, array([[   6.   ,  148.   ,   72.   , ...,   33.... ,   70.   , ...,   30.4  ,    0.315,   23.   ]]), array([ 1.,  0.,  1.,  0.,  1.,  0.,  1.,  0.,  ...0.,  1.,  0.,  1.,  0.,  0.,  0.,  0.,  1.,  0.]), <function _passthrough_scorer>, array([  0,   1,   2,   3,   4,   5,   6,   7,  ...,
+       757, 758, 759, 760, 762, 763, 766, 767]), array([ 11,  19,  24,  31,  32,  37,  59,  64,  ..., 723, 736,
+       740, 747, 749, 761, 764, 765]), 0, None, None)
+        kwargs = {}
+    132 
+    133     def __len__(self):
+    134         return self._size
+    135 
+
+...........................................................................
+/home/sumeyer/anaconda3/envs/tfGPU/lib/python3.5/site-packages/sklearn/model_selection/_validation.py in _fit_and_score(estimator=<keras.wrappers.scikit_learn.KerasClassifier object>, X=array([[   6.   ,  148.   ,   72.   , ...,   33.... ,   70.   , ...,   30.4  ,    0.315,   23.   ]]), y=array([ 1.,  0.,  1.,  0.,  1.,  0.,  1.,  0.,  ...0.,  1.,  0.,  1.,  0.,  0.,  0.,  0.,  1.,  0.]), scorer=<function _passthrough_scorer>, train=array([  0,   1,   2,   3,   4,   5,   6,   7,  ...,
+       757, 758, 759, 760, 762, 763, 766, 767]), test=array([ 11,  19,  24,  31,  32,  37,  59,  64,  ..., 723, 736,
+       740, 747, 749, 761, 764, 765]), verbose=0, parameters=None, fit_params={}, return_train_score=False, return_parameters=False, return_n_test_samples=False, return_times=False, error_score='raise')
+    233 
+    234     try:
+    235         if y_train is None:
+    236             estimator.fit(X_train, **fit_params)
+    237         else:
+--> 238             estimator.fit(X_train, y_train, **fit_params)
+        estimator.fit = <bound method BaseWrapper.fit of <keras.wrappers.scikit_learn.KerasClassifier object>>
+        X_train = array([[  6.00000000e+00,   1.48000000e+02,   7....000000e+01,   3.15000000e-01,   2.30000000e+01]])
+        y_train = array([ 1.,  0.,  1.,  0.,  1.,  0.,  1.,  0.,  ...,
+        1.,  0.,  1.,  0.,  0.,  0.,  1.,  0.])
+        fit_params = {}
+    239 
+    240     except Exception as e:
+    241         # Note fit time as time until error
+    242         fit_time = time.time() - start_time
+
+...........................................................................
+/home/sumeyer/anaconda3/envs/tfGPU/lib/python3.5/site-packages/keras/wrappers/scikit_learn.py in fit(self=<keras.wrappers.scikit_learn.KerasClassifier object>, x=array([[  6.00000000e+00,   1.48000000e+02,   7....000000e+01,   3.15000000e-01,   2.30000000e+01]]), y=array([ 1.,  0.,  1.,  0.,  1.,  0.,  1.,  0.,  ...,
+        1.,  0.,  1.,  0.,  0.,  0.,  1.,  0.]), **kwargs={})
+    129         elif (not isinstance(self.build_fn, types.FunctionType) and
+    130               not isinstance(self.build_fn, types.MethodType)):
+    131             self.model = self.build_fn(
+    132                 **self.filter_sk_params(self.build_fn.__call__))
+    133         else:
+--> 134             self.model = self.build_fn(**self.filter_sk_params(self.build_fn))
+        self.model = undefined
+        self.build_fn = <function create_model>
+        self.filter_sk_params = <bound method BaseWrapper.filter_sk_params of <keras.wrappers.scikit_learn.KerasClassifier object>>
+    135 
+    136         loss_name = self.model.loss
+    137         if hasattr(loss_name, '__name__'):
+    138             loss_name = loss_name.__name__
+
+...........................................................................
+/home/sumeyer/PycharmProjects/keras/MLM_code/chapter_09/sklearn_cross_validation.py in create_model()
+     20 
+     21 # Function to create model, required for KerasClassifier
+     22 def create_model():
+     23 	# create model
+     24 	model = Sequential()
+---> 25 	model.add(Dense(12, input_dim=8, init='uniform', activation='relu'))
+        model.add = <bound method Sequential.add of <keras.models.Sequential object>>
+     26 	model.add(Dense(8, init='uniform', activation='relu'))
+     27 	model.add(Dense(1, init='uniform', activation='sigmoid'))
+     28 	# Compile model
+     29 	model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
+
+...........................................................................
+/home/sumeyer/anaconda3/envs/tfGPU/lib/python3.5/site-packages/keras/models.py in add(self=<keras.models.Sequential object>, layer=<keras.layers.core.Dense object>)
+    294                 batch_input_shape = layer.batch_input_shape
+    295                 if hasattr(layer, 'input_dtype'):
+    296                     input_dtype = layer.input_dtype
+    297                 else:
+    298                     input_dtype = None
+--> 299                 layer.create_input_layer(batch_input_shape, input_dtype)
+        layer.create_input_layer = <bound method Layer.create_input_layer of <keras.layers.core.Dense object>>
+        batch_input_shape = (None, 8)
+        input_dtype = 'float32'
+    300 
+    301             if len(layer.inbound_nodes) != 1:
+    302                 raise ValueError('A layer added to a Sequential model must '
+    303                                  'not already be connected somewhere else. '
+
+...........................................................................
+/home/sumeyer/anaconda3/envs/tfGPU/lib/python3.5/site-packages/keras/engine/topology.py in create_input_layer(self=<keras.layers.core.Dense object>, batch_input_shape=(None, 8), input_dtype='float32', name='dense_input_1')
+    396         x = Input(batch_shape=batch_input_shape,
+    397                   dtype=input_dtype, name=name)
+    398         # This will build the current layer
+    399         # and create the node connecting the current layer
+    400         # to the input layer we just created.
+--> 401         self(x)
+        self = <keras.layers.core.Dense object>
+        x = dense_input_1
+    402 
+    403     def add_weight(self, shape, initializer, name=None,
+    404                    trainable=True,
+    405                    regularizer=None,
+
+...........................................................................
+/home/sumeyer/anaconda3/envs/tfGPU/lib/python3.5/site-packages/keras/engine/topology.py in __call__(self=<keras.layers.core.Dense object>, x=dense_input_1, mask=None)
+    541                                      ' about its expected input shape, '
+    542                                      'and thus cannot be built. '
+    543                                      'You can build it manually via: '
+    544                                      '`layer.build(batch_input_shape)`')
+    545             if len(input_shapes) == 1:
+--> 546                 self.build(input_shapes[0])
+        self.build = <bound method Dense.build of <keras.layers.core.Dense object>>
+        input_shapes = [(None, 8)]
+    547             else:
+    548                 self.build(input_shapes)
+    549             self.built = True
+    550 
+
+...........................................................................
+/home/sumeyer/anaconda3/envs/tfGPU/lib/python3.5/site-packages/keras/layers/core.py in build(self=<keras.layers.core.Dense object>, input_shape=(None, 8))
+    793 
+    794         self.W = self.add_weight((input_dim, self.output_dim),
+    795                                  initializer=self.init,
+    796                                  name='{}_W'.format(self.name),
+    797                                  regularizer=self.W_regularizer,
+--> 798                                  constraint=self.W_constraint)
+        self.W_constraint = None
+    799         if self.bias:
+    800             self.b = self.add_weight((self.output_dim,),
+    801                                      initializer='zero',
+    802                                      name='{}_b'.format(self.name),
+
+...........................................................................
+/home/sumeyer/anaconda3/envs/tfGPU/lib/python3.5/site-packages/keras/engine/topology.py in add_weight(self=<keras.layers.core.Dense object>, shape=(8, 12), initializer=<function uniform>, name='dense_1_W', trainable=True, regularizer=None, constraint=None)
+    413                 be trained via backprop or not (assuming
+    414                 that the layer itself is also trainable).
+    415             regularizer: An optional Regularizer instance.
+    416         """
+    417         initializer = initializations.get(initializer)
+--> 418         weight = initializer(shape, name=name)
+        weight = undefined
+        initializer = <function uniform>
+        shape = (8, 12)
+        name = 'dense_1_W'
+    419         if regularizer is not None:
+    420             self.add_loss(regularizer(weight))
+    421         if constraint is not None:
+    422             self.constraints[weight] = constraint
+
+...........................................................................
+/home/sumeyer/anaconda3/envs/tfGPU/lib/python3.5/site-packages/keras/initializations.py in uniform(shape=(8, 12), scale=0.05, name='dense_1_W', dim_ordering='th')
+     28         fan_out = np.sqrt(np.prod(shape))
+     29     return fan_in, fan_out
+     30 
+     31 
+     32 def uniform(shape, scale=0.05, name=None, dim_ordering='th'):
+---> 33     return K.random_uniform_variable(shape, -scale, scale, name=name)
+        shape = (8, 12)
+        scale = 0.05
+        name = 'dense_1_W'
+     34 
+     35 
+     36 def normal(shape, scale=0.05, name=None, dim_ordering='th'):
+     37     return K.random_normal_variable(shape, 0.0, scale, name=name)
+
+...........................................................................
+/home/sumeyer/anaconda3/envs/tfGPU/lib/python3.5/site-packages/keras/backend/theano_backend.py in random_uniform_variable(shape=(8, 12), low=-0.05, high=0.05, dtype=None, name='dense_1_W')
+    184     return T.zeros_like(x, dtype=dtype)
+    185 
+    186 
+    187 def random_uniform_variable(shape, low, high, dtype=None, name=None):
+    188     return variable(np.random.uniform(low=low, high=high, size=shape),
+--> 189                     dtype=dtype, name=name)
+        dtype = None
+        name = 'dense_1_W'
+    190 
+    191 
+    192 def random_normal_variable(shape, mean, scale, dtype=None, name=None):
+    193     return variable(np.random.normal(loc=0.0, scale=scale, size=shape),
+
+...........................................................................
+/home/sumeyer/anaconda3/envs/tfGPU/lib/python3.5/site-packages/keras/backend/theano_backend.py in variable(value=array([[ -4.23691720e-02,   2.79918797e-02,  -6.....23436933e-02,  -2.42355000e-03]], dtype=float32), dtype='float32', name='dense_1_W')
+     82     if hasattr(value, 'tocoo'):
+     83         _assert_sparse_module()
+     84         variable = th_sparse_module.as_sparse_variable(value)
+     85     else:
+     86         value = np.asarray(value, dtype=dtype)
+---> 87         variable = theano.shared(value=value, name=name, strict=False)
+        variable = undefined
+        value = array([[ -4.23691720e-02,   2.79918797e-02,  -6.....23436933e-02,  -2.42355000e-03]], dtype=float32)
+        name = 'dense_1_W'
+     88     variable._keras_shape = value.shape
+     89     variable._uses_learning_phase = False
+     90     return variable
+     91 
+
+...........................................................................
+/home/sumeyer/.local/lib/python3.5/site-packages/theano/compile/sharedvalue.py in shared(value=array([[ -4.23691720e-02,   2.79918797e-02,  -6.....23436933e-02,  -2.42355000e-03]], dtype=float32), name='dense_1_W', strict=False, allow_downcast=None, **kwargs={})
+    267                             "values and not symbolic variables.")
+    268 
+    269         for ctor in reversed(shared.constructors):
+    270             try:
+    271                 var = ctor(value, name=name, strict=strict,
+--> 272                            allow_downcast=allow_downcast, **kwargs)
+        allow_downcast = None
+        kwargs = {}
+    273                 utils.add_tag_trace(var)
+    274                 return var
+    275             except TypeError:
+    276                 continue
+
+...........................................................................
+/home/sumeyer/.local/lib/python3.5/site-packages/theano/sandbox/cuda/var.py in float32_shared_constructor(value=array([[ -4.23691720e-02,   2.79918797e-02,  -6.....23436933e-02,  -2.42355000e-03]], dtype=float32), name='dense_1_W', strict=False, allow_downcast=None, borrow=False, broadcastable=(False, False), target='gpu')
+    183         else:
+    184             deviceval = value.copy()
+    185     else:
+    186         # type.broadcastable is guaranteed to be a tuple, which this next
+    187         # function requires
+--> 188         deviceval = type_support_filter(value, type.broadcastable, False, None)
+        deviceval = undefined
+        value = array([[ -4.23691720e-02,   2.79918797e-02,  -6.....23436933e-02,  -2.42355000e-03]], dtype=float32)
+        type.broadcastable = (False, False)
+    189 
+    190     try:
+    191         rval = CudaNdarraySharedVariable(type=type, value=deviceval, name=name, strict=strict)
+    192     except Exception as e:
+
+MemoryError: ('Error allocating 384 bytes of device memory (initialization error).', "you might consider using 'theano.shared(..., borrow=True)'")
+___________________________________________________________________________
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/sumeyer/PycharmProjects/keras/MLM_code/chapter_09/sklearn_cross_validation.py", line 47, in <module>
+    results = cross_val_score(model, X, Y, cv=kfold, n_jobs=8)
+  File "/home/sumeyer/anaconda3/envs/tfGPU/lib/python3.5/site-packages/sklearn/model_selection/_validation.py", line 140, in cross_val_score
+    for train, test in cv_iter)
+  File "/home/sumeyer/anaconda3/envs/tfGPU/lib/python3.5/site-packages/sklearn/externals/joblib/parallel.py", line 768, in __call__
+    self.retrieve()
+  File "/home/sumeyer/anaconda3/envs/tfGPU/lib/python3.5/site-packages/sklearn/externals/joblib/parallel.py", line 719, in retrieve
+    raise exception
+sklearn.externals.joblib.my_exceptions.JoblibMemoryError: JoblibMemoryError
+___________________________________________________________________________
+Multiprocessing exception:
+...........................................................................
+/home/sumeyer/PycharmProjects/keras/MLM_code/chapter_09/sklearn_cross_validation.py in <module>()
+     42 # evaluate using 10-fold cross validation
+     43 kfold = StratifiedKFold(n_splits=8, shuffle=True, random_state=seed)
+     44 
+     45 print("start model.fit ..."),
+     46 start = time.time()
+---> 47 results = cross_val_score(model, X, Y, cv=kfold, n_jobs=8)
+     48 end = time.time()
+     49 time_fit = (end - start)
+     50 print(start)
+     51 print(end)
+
+...........................................................................
+/home/sumeyer/anaconda3/envs/tfGPU/lib/python3.5/site-packages/sklearn/model_selection/_validation.py in cross_val_score(estimator=<keras.wrappers.scikit_learn.KerasClassifier object>, X=array([[   6.   ,  148.   ,   72.   , ...,   33.... ,   70.   , ...,   30.4  ,    0.315,   23.   ]]), y=array([ 1.,  0.,  1.,  0.,  1.,  0.,  1.,  0.,  ...0.,  1.,  0.,  1.,  0.,  0.,  0.,  0.,  1.,  0.]), groups=None, scoring=None, cv=StratifiedKFold(n_splits=8, random_state=7, shuffle=True), n_jobs=8, verbose=0, fit_params=None, pre_dispatch='2*n_jobs')
+    135     parallel = Parallel(n_jobs=n_jobs, verbose=verbose,
+    136                         pre_dispatch=pre_dispatch)
+    137     scores = parallel(delayed(_fit_and_score)(clone(estimator), X, y, scorer,
+    138                                               train, test, verbose, None,
+    139                                               fit_params)
+--> 140                       for train, test in cv_iter)
+        cv_iter = [(array([  0,   1,   2,   3,   4,   5,   6,   7,  ...,
+       757, 758, 759, 760, 762, 763, 766, 767]), array([ 11,  19,  24,  31,  32,  37,  59,  64,  ..., 723, 736,
+       740, 747, 749, 761, 764, 765])), (array([  0,   1,   2,   3,   4,   6,   8,   9,  ...,
+       760, 761, 762, 763, 764, 765, 766, 767]), array([  5,   7,  14,  15,  17,  22,  33,  38,  ..., 688, 697,
+       706, 715, 720, 727, 739, 755])), (array([  0,   1,   2,   3,   4,   5,   6,   7,  ...,
+       759, 761, 762, 763, 764, 765, 766, 767]), array([  9,  34,  54,  67,  79,  87,  92,  98, 1..., 717, 725,
+       730, 738, 746, 750, 756, 760])), (array([  0,   1,   2,   3,   4,   5,   6,   7,  ...,
+       760, 761, 762, 763, 764, 765, 766, 767]), array([ 13,  16,  25,  35,  39,  40,  42,  62,  ..., 704, 709,
+       712, 716, 732, 735, 737, 758])), (array([  0,   1,   2,   5,   6,   7,   8,   9,  ...57, 758, 759, 760, 761, 763, 764, 765, 766, 767]), array([  3,   4,  20,  21,  27,  29,  43,  49,  ..., 722, 726, 731, 741,
+       742, 744, 753, 762])), (array([  0,   1,   2,   3,   4,   5,   7,   8,  ...56, 757, 758, 759, 760, 761, 762, 763, 764, 765]), array([  6,  12,  36,  55,  56,  82, 101, 114, 1..., 685, 698, 708, 710,
+       718, 751, 766, 767])), (array([  0,   1,   2,   3,   4,   5,   6,   7,  ...56, 757, 758, 760, 761, 762, 764, 765, 766, 767]), array([  8,  10,  26,  28,  30,  41,  44,  53,  ..., 721, 724, 729, 733,
+       743, 752, 759, 763])), (array([  3,   4,   5,   6,   7,   8,   9,  10,  ...58, 759, 760, 761, 762, 763, 764, 765, 766, 767]), array([  0,   1,   2,  18,  23,  45,  47,  48,  ..., 713, 719, 728, 734,
+       745, 748, 754, 757]))]
+    141     return np.array(scores)[:, 0]
+    142 
+    143 
+    144 def _fit_and_score(estimator, X, y, scorer, train, test, verbose,
+
+...........................................................................
+/home/sumeyer/anaconda3/envs/tfGPU/lib/python3.5/site-packages/sklearn/externals/joblib/parallel.py in __call__(self=Parallel(n_jobs=8), iterable=<generator object cross_val_score.<locals>.<genexpr>>)
+    763             if pre_dispatch == "all" or n_jobs == 1:
+    764                 # The iterable was consumed all at once by the above for loop.
+    765                 # No need to wait for async callbacks to trigger to
+    766                 # consumption.
+    767                 self._iterating = False
+--> 768             self.retrieve()
+        self.retrieve = <bound method Parallel.retrieve of Parallel(n_jobs=8)>
+    769             # Make sure that we get a last message telling us we are done
+    770             elapsed_time = time.time() - self._start_time
+    771             self._print('Done %3i out of %3i | elapsed: %s finished',
+    772                         (len(self._output), len(self._output),
+
+---------------------------------------------------------------------------
+Sub-process traceback:
+---------------------------------------------------------------------------
+MemoryError                                        Wed Feb  1 19:51:32 2017
+PID: 20580      Python 3.5.2: /home/sumeyer/anaconda3/envs/tfGPU/bin/python
+...........................................................................
+/home/sumeyer/anaconda3/envs/tfGPU/lib/python3.5/site-packages/sklearn/externals/joblib/parallel.py in __call__(self=<sklearn.externals.joblib.parallel.BatchedCalls object>)
+    126     def __init__(self, iterator_slice):
+    127         self.items = list(iterator_slice)
+    128         self._size = len(self.items)
+    129 
+    130     def __call__(self):
+--> 131         return [func(*args, **kwargs) for func, args, kwargs in self.items]
+        self.items = [(<function _fit_and_score>, (<keras.wrappers.scikit_learn.KerasClassifier object>, array([[   6.   ,  148.   ,   72.   , ...,   33.... ,   70.   , ...,   30.4  ,    0.315,   23.   ]]), array([ 1.,  0.,  1.,  0.,  1.,  0.,  1.,  0.,  ...0.,  1.,  0.,  1.,  0.,  0.,  0.,  0.,  1.,  0.]), <function _passthrough_scorer>, array([  0,   1,   2,   3,   4,   5,   6,   7,  ...,
+       757, 758, 759, 760, 762, 763, 766, 767]), array([ 11,  19,  24,  31,  32,  37,  59,  64,  ..., 723, 736,
+       740, 747, 749, 761, 764, 765]), 0, None, None), {})]
+    132 
+    133     def __len__(self):
+    134         return self._size
+    135 
+
+...........................................................................
+/home/sumeyer/anaconda3/envs/tfGPU/lib/python3.5/site-packages/sklearn/externals/joblib/parallel.py in <listcomp>(.0=<list_iterator object>)
+    126     def __init__(self, iterator_slice):
+    127         self.items = list(iterator_slice)
+    128         self._size = len(self.items)
+    129 
+    130     def __call__(self):
+--> 131         return [func(*args, **kwargs) for func, args, kwargs in self.items]
+        func = <function _fit_and_score>
+        args = (<keras.wrappers.scikit_learn.KerasClassifier object>, array([[   6.   ,  148.   ,   72.   , ...,   33.... ,   70.   , ...,   30.4  ,    0.315,   23.   ]]), array([ 1.,  0.,  1.,  0.,  1.,  0.,  1.,  0.,  ...0.,  1.,  0.,  1.,  0.,  0.,  0.,  0.,  1.,  0.]), <function _passthrough_scorer>, array([  0,   1,   2,   3,   4,   5,   6,   7,  ...,
+       757, 758, 759, 760, 762, 763, 766, 767]), array([ 11,  19,  24,  31,  32,  37,  59,  64,  ..., 723, 736,
+       740, 747, 749, 761, 764, 765]), 0, None, None)
+        kwargs = {}
+    132 
+    133     def __len__(self):
+    134         return self._size
+    135 
+
+...........................................................................
+/home/sumeyer/anaconda3/envs/tfGPU/lib/python3.5/site-packages/sklearn/model_selection/_validation.py in _fit_and_score(estimator=<keras.wrappers.scikit_learn.KerasClassifier object>, X=array([[   6.   ,  148.   ,   72.   , ...,   33.... ,   70.   , ...,   30.4  ,    0.315,   23.   ]]), y=array([ 1.,  0.,  1.,  0.,  1.,  0.,  1.,  0.,  ...0.,  1.,  0.,  1.,  0.,  0.,  0.,  0.,  1.,  0.]), scorer=<function _passthrough_scorer>, train=array([  0,   1,   2,   3,   4,   5,   6,   7,  ...,
+       757, 758, 759, 760, 762, 763, 766, 767]), test=array([ 11,  19,  24,  31,  32,  37,  59,  64,  ..., 723, 736,
+       740, 747, 749, 761, 764, 765]), verbose=0, parameters=None, fit_params={}, return_train_score=False, return_parameters=False, return_n_test_samples=False, return_times=False, error_score='raise')
+    233 
+    234     try:
+    235         if y_train is None:
+    236             estimator.fit(X_train, **fit_params)
+    237         else:
+--> 238             estimator.fit(X_train, y_train, **fit_params)
+        estimator.fit = <bound method BaseWrapper.fit of <keras.wrappers.scikit_learn.KerasClassifier object>>
+        X_train = array([[  6.00000000e+00,   1.48000000e+02,   7....000000e+01,   3.15000000e-01,   2.30000000e+01]])
+        y_train = array([ 1.,  0.,  1.,  0.,  1.,  0.,  1.,  0.,  ...,
+        1.,  0.,  1.,  0.,  0.,  0.,  1.,  0.])
+        fit_params = {}
+    239 
+    240     except Exception as e:
+    241         # Note fit time as time until error
+    242         fit_time = time.time() - start_time
+
+...........................................................................
+/home/sumeyer/anaconda3/envs/tfGPU/lib/python3.5/site-packages/keras/wrappers/scikit_learn.py in fit(self=<keras.wrappers.scikit_learn.KerasClassifier object>, x=array([[  6.00000000e+00,   1.48000000e+02,   7....000000e+01,   3.15000000e-01,   2.30000000e+01]]), y=array([ 1.,  0.,  1.,  0.,  1.,  0.,  1.,  0.,  ...,
+        1.,  0.,  1.,  0.,  0.,  0.,  1.,  0.]), **kwargs={})
+    129         elif (not isinstance(self.build_fn, types.FunctionType) and
+    130               not isinstance(self.build_fn, types.MethodType)):
+    131             self.model = self.build_fn(
+    132                 **self.filter_sk_params(self.build_fn.__call__))
+    133         else:
+--> 134             self.model = self.build_fn(**self.filter_sk_params(self.build_fn))
+        self.model = undefined
+        self.build_fn = <function create_model>
+        self.filter_sk_params = <bound method BaseWrapper.filter_sk_params of <keras.wrappers.scikit_learn.KerasClassifier object>>
+    135 
+    136         loss_name = self.model.loss
+    137         if hasattr(loss_name, '__name__'):
+    138             loss_name = loss_name.__name__
+
+...........................................................................
+/home/sumeyer/PycharmProjects/keras/MLM_code/chapter_09/sklearn_cross_validation.py in create_model()
+     20 
+     21 # Function to create model, required for KerasClassifier
+     22 def create_model():
+     23 	# create model
+     24 	model = Sequential()
+---> 25 	model.add(Dense(12, input_dim=8, init='uniform', activation='relu'))
+        model.add = <bound method Sequential.add of <keras.models.Sequential object>>
+     26 	model.add(Dense(8, init='uniform', activation='relu'))
+     27 	model.add(Dense(1, init='uniform', activation='sigmoid'))
+     28 	# Compile model
+     29 	model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
+
+...........................................................................
+/home/sumeyer/anaconda3/envs/tfGPU/lib/python3.5/site-packages/keras/models.py in add(self=<keras.models.Sequential object>, layer=<keras.layers.core.Dense object>)
+    294                 batch_input_shape = layer.batch_input_shape
+    295                 if hasattr(layer, 'input_dtype'):
+    296                     input_dtype = layer.input_dtype
+    297                 else:
+    298                     input_dtype = None
+--> 299                 layer.create_input_layer(batch_input_shape, input_dtype)
+        layer.create_input_layer = <bound method Layer.create_input_layer of <keras.layers.core.Dense object>>
+        batch_input_shape = (None, 8)
+        input_dtype = 'float32'
+    300 
+    301             if len(layer.inbound_nodes) != 1:
+    302                 raise ValueError('A layer added to a Sequential model must '
+    303                                  'not already be connected somewhere else. '
+
+...........................................................................
+/home/sumeyer/anaconda3/envs/tfGPU/lib/python3.5/site-packages/keras/engine/topology.py in create_input_layer(self=<keras.layers.core.Dense object>, batch_input_shape=(None, 8), input_dtype='float32', name='dense_input_1')
+    396         x = Input(batch_shape=batch_input_shape,
+    397                   dtype=input_dtype, name=name)
+    398         # This will build the current layer
+    399         # and create the node connecting the current layer
+    400         # to the input layer we just created.
+--> 401         self(x)
+        self = <keras.layers.core.Dense object>
+        x = dense_input_1
+    402 
+    403     def add_weight(self, shape, initializer, name=None,
+    404                    trainable=True,
+    405                    regularizer=None,
+
+...........................................................................
+/home/sumeyer/anaconda3/envs/tfGPU/lib/python3.5/site-packages/keras/engine/topology.py in __call__(self=<keras.layers.core.Dense object>, x=dense_input_1, mask=None)
+    541                                      ' about its expected input shape, '
+    542                                      'and thus cannot be built. '
+    543                                      'You can build it manually via: '
+    544                                      '`layer.build(batch_input_shape)`')
+    545             if len(input_shapes) == 1:
+--> 546                 self.build(input_shapes[0])
+        self.build = <bound method Dense.build of <keras.layers.core.Dense object>>
+        input_shapes = [(None, 8)]
+    547             else:
+    548                 self.build(input_shapes)
+    549             self.built = True
+    550 
+
+...........................................................................
+/home/sumeyer/anaconda3/envs/tfGPU/lib/python3.5/site-packages/keras/layers/core.py in build(self=<keras.layers.core.Dense object>, input_shape=(None, 8))
+    793 
+    794         self.W = self.add_weight((input_dim, self.output_dim),
+    795                                  initializer=self.init,
+    796                                  name='{}_W'.format(self.name),
+    797                                  regularizer=self.W_regularizer,
+--> 798                                  constraint=self.W_constraint)
+        self.W_constraint = None
+    799         if self.bias:
+    800             self.b = self.add_weight((self.output_dim,),
+    801                                      initializer='zero',
+    802                                      name='{}_b'.format(self.name),
+
+...........................................................................
+/home/sumeyer/anaconda3/envs/tfGPU/lib/python3.5/site-packages/keras/engine/topology.py in add_weight(self=<keras.layers.core.Dense object>, shape=(8, 12), initializer=<function uniform>, name='dense_1_W', trainable=True, regularizer=None, constraint=None)
+    413                 be trained via backprop or not (assuming
+    414                 that the layer itself is also trainable).
+    415             regularizer: An optional Regularizer instance.
+    416         """
+    417         initializer = initializations.get(initializer)
+--> 418         weight = initializer(shape, name=name)
+        weight = undefined
+        initializer = <function uniform>
+        shape = (8, 12)
+        name = 'dense_1_W'
+    419         if regularizer is not None:
+    420             self.add_loss(regularizer(weight))
+    421         if constraint is not None:
+    422             self.constraints[weight] = constraint
+
+...........................................................................
+/home/sumeyer/anaconda3/envs/tfGPU/lib/python3.5/site-packages/keras/initializations.py in uniform(shape=(8, 12), scale=0.05, name='dense_1_W', dim_ordering='th')
+     28         fan_out = np.sqrt(np.prod(shape))
+     29     return fan_in, fan_out
+     30 
+     31 
+     32 def uniform(shape, scale=0.05, name=None, dim_ordering='th'):
+---> 33     return K.random_uniform_variable(shape, -scale, scale, name=name)
+        shape = (8, 12)
+        scale = 0.05
+        name = 'dense_1_W'
+     34 
+     35 
+     36 def normal(shape, scale=0.05, name=None, dim_ordering='th'):
+     37     return K.random_normal_variable(shape, 0.0, scale, name=name)
+
+...........................................................................
+/home/sumeyer/anaconda3/envs/tfGPU/lib/python3.5/site-packages/keras/backend/theano_backend.py in random_uniform_variable(shape=(8, 12), low=-0.05, high=0.05, dtype=None, name='dense_1_W')
+    184     return T.zeros_like(x, dtype=dtype)
+    185 
+    186 
+    187 def random_uniform_variable(shape, low, high, dtype=None, name=None):
+    188     return variable(np.random.uniform(low=low, high=high, size=shape),
+--> 189                     dtype=dtype, name=name)
+        dtype = None
+        name = 'dense_1_W'
+    190 
+    191 
+    192 def random_normal_variable(shape, mean, scale, dtype=None, name=None):
+    193     return variable(np.random.normal(loc=0.0, scale=scale, size=shape),
+
+...........................................................................
+/home/sumeyer/anaconda3/envs/tfGPU/lib/python3.5/site-packages/keras/backend/theano_backend.py in variable(value=array([[ -4.23691720e-02,   2.79918797e-02,  -6.....23436933e-02,  -2.42355000e-03]], dtype=float32), dtype='float32', name='dense_1_W')
+     82     if hasattr(value, 'tocoo'):
+     83         _assert_sparse_module()
+     84         variable = th_sparse_module.as_sparse_variable(value)
+     85     else:
+     86         value = np.asarray(value, dtype=dtype)
+---> 87         variable = theano.shared(value=value, name=name, strict=False)
+        variable = undefined
+        value = array([[ -4.23691720e-02,   2.79918797e-02,  -6.....23436933e-02,  -2.42355000e-03]], dtype=float32)
+        name = 'dense_1_W'
+     88     variable._keras_shape = value.shape
+     89     variable._uses_learning_phase = False
+     90     return variable
+     91 
+
+...........................................................................
+/home/sumeyer/.local/lib/python3.5/site-packages/theano/compile/sharedvalue.py in shared(value=array([[ -4.23691720e-02,   2.79918797e-02,  -6.....23436933e-02,  -2.42355000e-03]], dtype=float32), name='dense_1_W', strict=False, allow_downcast=None, **kwargs={})
+    267                             "values and not symbolic variables.")
+    268 
+    269         for ctor in reversed(shared.constructors):
+    270             try:
+    271                 var = ctor(value, name=name, strict=strict,
+--> 272                            allow_downcast=allow_downcast, **kwargs)
+        allow_downcast = None
+        kwargs = {}
+    273                 utils.add_tag_trace(var)
+    274                 return var
+    275             except TypeError:
+    276                 continue
+
+...........................................................................
+/home/sumeyer/.local/lib/python3.5/site-packages/theano/sandbox/cuda/var.py in float32_shared_constructor(value=array([[ -4.23691720e-02,   2.79918797e-02,  -6.....23436933e-02,  -2.42355000e-03]], dtype=float32), name='dense_1_W', strict=False, allow_downcast=None, borrow=False, broadcastable=(False, False), target='gpu')
+    183         else:
+    184             deviceval = value.copy()
+    185     else:
+    186         # type.broadcastable is guaranteed to be a tuple, which this next
+    187         # function requires
+--> 188         deviceval = type_support_filter(value, type.broadcastable, False, None)
+        deviceval = undefined
+        value = array([[ -4.23691720e-02,   2.79918797e-02,  -6.....23436933e-02,  -2.42355000e-03]], dtype=float32)
+        type.broadcastable = (False, False)
+    189 
+    190     try:
+    191         rval = CudaNdarraySharedVariable(type=type, value=deviceval, name=name, strict=strict)
+    192     except Exception as e:
+
+MemoryError: ('Error allocating 384 bytes of device memory (initialization error).', "you might consider using 'theano.shared(..., borrow=True)'")
+___________________________________________________________________________
+
+Process finished with exit code 1
+

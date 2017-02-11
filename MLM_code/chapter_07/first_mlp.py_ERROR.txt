@@ -1,0 +1,573 @@
+/home/sumeyer/anaconda3/envs/tfGPU/bin/python /home/sumeyer/PycharmProjects/keras/MLM_code/chapter_07/first_mlp.py
+Using Theano backend.
+Using gpu device 0: GeForce GTX 1080 (CNMeM is disabled, cuDNN 5105)
+1 #include <Python.h>
+2 #include <iostream>
+3 #include "theano_mod_helper.h"
+4 #include "cuda_ndarray.cuh"
+5 //////////////////////
+6 ////  Support Code
+7 //////////////////////
+8 
+9     namespace {
+10     struct __struct_compiled_op_m35c6a38a16821f008e4bc5bbfd89a1ce {
+11         PyObject* __ERROR;
+12 
+13         PyObject* storage_V3;
+14 PyObject* storage_V1;
+15         
+16 
+17         __struct_compiled_op_m35c6a38a16821f008e4bc5bbfd89a1ce() {
+18             // This is only somewhat safe because we:
+19             //  1) Are not a virtual class
+20             //  2) Do not use any virtual classes in the members
+21             //  3) Deal with mostly POD and pointers
+22 
+23             // If this changes, we would have to revise this, but for
+24             // now I am tired of chasing segfaults because
+25             // initialization code had an error and some pointer has
+26             // a junk value.
+27             memset(this, 0, sizeof(*this));
+28         }
+29         ~__struct_compiled_op_m35c6a38a16821f008e4bc5bbfd89a1ce(void) {
+30             cleanup();
+31         }
+32 
+33         int init(PyObject* __ERROR, PyObject* storage_V3, PyObject* storage_V1) {
+34             Py_XINCREF(storage_V3);
+35 Py_XINCREF(storage_V1);
+36             this->storage_V3 = storage_V3;
+37 this->storage_V1 = storage_V1;
+38             
+39 
+40 
+41 
+42             this->__ERROR = __ERROR;
+43             return 0;
+44         }
+45         void cleanup(void) {
+46             __label_1:
+47 
+48 double __DUMMY_1;
+49 __label_3:
+50 
+51 double __DUMMY_3;
+52 __label_6:
+53 
+54 double __DUMMY_6;
+55 
+56             Py_XDECREF(this->storage_V3);
+57 Py_XDECREF(this->storage_V1);
+58         }
+59         int run(void) {
+60             int __failure = 0;
+61             
+62     PyObject* py_V1;
+63      CudaNdarray * V1;
+64     PyObject* py_V3;
+65      CudaNdarray * V3;
+66 {
+67 
+68     py_V1 = PyList_GET_ITEM(storage_V1, 0);
+69     {Py_XINCREF(py_V1);}
+70     
+71         if (py_V1 == Py_None)
+72         {
+73             V1 = NULL;
+74         }
+75         else
+76         {
+77             
+78         assert(py_V1->ob_refcnt >= 2); // There should be at least one ref from the container object,
+79         // and one ref from the local scope.
+80 
+81         if (CudaNdarray_Check(py_V1))
+82         {
+83             //fprintf(stderr, "c_extract CNDA object w refcnt %p %i\n", py_V1, (py_V1->ob_refcnt));
+84             V1 = (CudaNdarray*)py_V1;
+85             //std::cerr << "c_extract " << V1 << '\n';
+86         
+87 
+88                 if (V1->nd != 2)
+89                 {
+90                     PyErr_Format(PyExc_RuntimeError,
+91                                  "c_extract: Some CudaNdarray has rank %i, it was supposed to have rank 2",
+92                                  V1->nd);
+93                     V1 = NULL;
+94                     {
+95         __failure = 2;
+96         if (!PyErr_Occurred()) {
+97             PyErr_SetString(PyExc_RuntimeError,
+98                 "Unexpected error in an Op's C code. "
+99                 "No Python exception was set.");
+100             }
+101         goto __label_2;};
+102                 }
+103                 //std::cerr << "c_extract " << V1 << " nd check passed\n";
+104             
+105 
+106                 assert(V1);
+107                 Py_INCREF(py_V1);
+108             }
+109             else if (py_V1 == Py_None)
+110             {
+111                 PyErr_SetString(PyExc_TypeError,
+112                                 "expected a CudaNdarray, not None");
+113                 V1 = NULL;
+114                 {
+115         __failure = 2;
+116         if (!PyErr_Occurred()) {
+117             PyErr_SetString(PyExc_RuntimeError,
+118                 "Unexpected error in an Op's C code. "
+119                 "No Python exception was set.");
+120             }
+121         goto __label_2;};
+122             }
+123             else
+124             {
+125                 //fprintf(stderr, "FAILING c_extract CNDA object w refcnt %p %i\n", py_V1, (py_V1->ob_refcnt));
+126                 PyErr_SetString(PyExc_TypeError, "Argument not a CudaNdarray");
+127                 V1 = NULL;
+128                 {
+129         __failure = 2;
+130         if (!PyErr_Occurred()) {
+131             PyErr_SetString(PyExc_RuntimeError,
+132                 "Unexpected error in an Op's C code. "
+133                 "No Python exception was set.");
+134             }
+135         goto __label_2;};
+136             }
+137             //std::cerr << "c_extract done " << V1 << '\n';
+138             
+139 
+140         }
+141         
+142 {
+143 
+144     py_V3 = PyList_GET_ITEM(storage_V3, 0);
+145     {Py_XINCREF(py_V3);}
+146     
+147         assert(py_V3->ob_refcnt >= 2); // There should be at least one ref from the container object,
+148         // and one ref from the local scope.
+149 
+150         if (CudaNdarray_Check(py_V3))
+151         {
+152             //fprintf(stderr, "c_extract CNDA object w refcnt %p %i\n", py_V3, (py_V3->ob_refcnt));
+153             V3 = (CudaNdarray*)py_V3;
+154             //std::cerr << "c_extract " << V3 << '\n';
+155         
+156 
+157                 if (V3->nd != 2)
+158                 {
+159                     PyErr_Format(PyExc_RuntimeError,
+160                                  "c_extract: Some CudaNdarray has rank %i, it was supposed to have rank 2",
+161                                  V3->nd);
+162                     V3 = NULL;
+163                     {
+164         __failure = 4;
+165         if (!PyErr_Occurred()) {
+166             PyErr_SetString(PyExc_RuntimeError,
+167                 "Unexpected error in an Op's C code. "
+168                 "No Python exception was set.");
+169             }
+170         goto __label_4;};
+171                 }
+172                 //std::cerr << "c_extract " << V3 << " nd check passed\n";
+173             
+174 
+175                 assert(V3);
+176                 Py_INCREF(py_V3);
+177             }
+178             else if (py_V3 == Py_None)
+179             {
+180                 PyErr_SetString(PyExc_TypeError,
+181                                 "expected a CudaNdarray, not None");
+182                 V3 = NULL;
+183                 {
+184         __failure = 4;
+185         if (!PyErr_Occurred()) {
+186             PyErr_SetString(PyExc_RuntimeError,
+187                 "Unexpected error in an Op's C code. "
+188                 "No Python exception was set.");
+189             }
+190         goto __label_4;};
+191             }
+192             else
+193             {
+194                 //fprintf(stderr, "FAILING c_extract CNDA object w refcnt %p %i\n", py_V3, (py_V3->ob_refcnt));
+195                 PyErr_SetString(PyExc_TypeError, "Argument not a CudaNdarray");
+196                 V3 = NULL;
+197                 {
+198         __failure = 4;
+199         if (!PyErr_Occurred()) {
+200             PyErr_SetString(PyExc_RuntimeError,
+201                 "Unexpected error in an Op's C code. "
+202                 "No Python exception was set.");
+203             }
+204         goto __label_4;};
+205             }
+206             //std::cerr << "c_extract done " << V3 << '\n';
+207             
+208 
+209 {
+210 // Op class GpuElemwise
+211 
+212         //std::cerr << "C_CODE RoundHalfToEven START\n";
+213         //standard elemwise size checks
+214             
+215 
+216             int dims[2] = {1,1};
+217             
+218 
+219                 int broadcasts_V3[2] = {0, 0};
+220                 
+221 
+222         //std::cerr << "C_CODE RoundHalfToEven checking input V3\n";
+223         if (2 != V3->nd)
+224         {
+225             PyErr_Format(PyExc_TypeError,
+226                          "need 2 dims, not %i", V3->nd);
+227             {
+228         __failure = 5;
+229         if (!PyErr_Occurred()) {
+230             PyErr_SetString(PyExc_RuntimeError,
+231                 "Unexpected error in an Op's C code. "
+232                 "No Python exception was set.");
+233             }
+234         goto __label_5;};
+235         }
+236         for (int i = 0; i< 2; ++i)
+237         {
+238             dims[i] = (dims[i] == 1) ? CudaNdarray_HOST_DIMS(V3)[i] : dims[i];
+239             if ((!(broadcasts_V3[i] &&
+240                  CudaNdarray_HOST_DIMS(V3)[i] == 1)) &&
+241                 (dims[i] != CudaNdarray_HOST_DIMS(V3)[i]))
+242             {
+243                 //std::cerr << "C_CODE RoundHalfToEven checking input V3 failed\n";
+244                 PyErr_Format(PyExc_ValueError,
+245                              "GpuElemwise. Input dimension mis-match. Input"
+246                              " 0 (indices start at 0) has shape[%i] == %i"
+247                              ", but the output's size on that axis is %i.",
+248                              i,
+249                              CudaNdarray_HOST_DIMS(V3)[i],
+250                              dims[i]
+251                             );
+252                 {
+253         __failure = 5;
+254         if (!PyErr_Occurred()) {
+255             PyErr_SetString(PyExc_RuntimeError,
+256                 "Unexpected error in an Op's C code. "
+257                 "No Python exception was set.");
+258             }
+259         goto __label_5;};
+260             }
+261         }
+262             
+263 
+264         Py_XDECREF(V1);
+265         V1 = V3;
+266         Py_INCREF(V1);
+267         for (int i = 0; (i< 2) && (V1); ++i) {
+268             if (dims[i] != CudaNdarray_HOST_DIMS(V1)[i])
+269             {
+270                 PyErr_Format(PyExc_ValueError,
+271                              "GpuElemwise. Output dimension mis-match. Output"
+272                              " 0 (indices start at 0), working inplace"
+273                              " on input 0, has shape[%i] == %i"
+274                              ", but the output's size on that axis is %i.",
+275                              i,
+276                              CudaNdarray_HOST_DIMS(V1)[i],
+277                              dims[i]
+278                             );
+279                 Py_DECREF(V1);
+280                 V1 = NULL;
+281                 {
+282         __failure = 5;
+283         if (!PyErr_Occurred()) {
+284             PyErr_SetString(PyExc_RuntimeError,
+285                 "Unexpected error in an Op's C code. "
+286                 "No Python exception was set.");
+287             }
+288         goto __label_5;};
+289             }
+290         }
+291         //std::cerr << "ELEMWISE NEW V1 nd" << V1->nd << "\n";
+292         //std::cerr << "ELEMWISE NEW V1 data" << V1->devdata << "\n";
+293         
+294 
+295         {
+296             //new block so that failure gotos don't skip over variable initialization
+297             //std::cerr << "calling callkernel\n";
+298             if (callkernel_node_m35c6a38a16821f008e4bc5bbfd89a1ce_0(1, 0, dims
+299             
+300 
+301                         , CudaNdarray_DEV_DATA(V3), CudaNdarray_HOST_STRIDES(V3)
+302             
+303 
+304                         , CudaNdarray_DEV_DATA(V1), CudaNdarray_HOST_STRIDES(V1)
+305             
+306 
+307                         ))
+308             {
+309                  // error
+310             
+311 
+312                 Py_DECREF(V1);
+313                 V1 = NULL;
+314                 
+315 
+316                 {
+317         __failure = 5;
+318         if (!PyErr_Occurred()) {
+319             PyErr_SetString(PyExc_RuntimeError,
+320                 "Unexpected error in an Op's C code. "
+321                 "No Python exception was set.");
+322             }
+323         goto __label_5;};
+324             }
+325             else // no error
+326             {
+327             }
+328         }
+329         //std::cerr << "C_CODE RoundHalfToEven END\n";
+330         
+331 __label_5:
+332 
+333 double __DUMMY_5;
+334 
+335 }
+336 __label_4:
+337 
+338         //std::cerr << "cleanup " << py_V3 << " " << V3 << "\n";
+339         //fprintf(stderr, "c_cleanup CNDA py_object w refcnt %p %i\n", py_V3, (py_V3->ob_refcnt));
+340         if (V3)
+341         {
+342             //fprintf(stderr, "c_cleanup CNDA cn_object w refcnt %p %i\n", V3, (V3->ob_refcnt));
+343             Py_XDECREF(V3);
+344         }
+345         //std::cerr << "cleanup done" << py_V3 << "\n";
+346         
+347     {Py_XDECREF(py_V3);}
+348     
+349 double __DUMMY_4;
+350 
+351 }
+352 __label_2:
+353 
+354     if (!__failure) {
+355       
+356         //std::cerr << "sync\n";
+357         if (NULL == V1) {
+358             // failure: sync None to storage
+359             Py_XDECREF(py_V1);
+360             py_V1 = Py_None;
+361             Py_INCREF(py_V1);
+362         }
+363         else
+364         {
+365             if (py_V1 != (PyObject*)V1)
+366             {
+367                 Py_XDECREF(py_V1);
+368                 py_V1 = (PyObject*)V1;
+369                 Py_INCREF(py_V1);
+370             }
+371             assert(py_V1->ob_refcnt);
+372         }
+373         
+374       PyObject* old = PyList_GET_ITEM(storage_V1, 0);
+375       {Py_XINCREF(py_V1);}
+376       PyList_SET_ITEM(storage_V1, 0, py_V1);
+377       {Py_XDECREF(old);}
+378     }
+379     
+380         //std::cerr << "cleanup " << py_V1 << " " << V1 << "\n";
+381         //fprintf(stderr, "c_cleanup CNDA py_object w refcnt %p %i\n", py_V1, (py_V1->ob_refcnt));
+382         if (V1)
+383         {
+384             //fprintf(stderr, "c_cleanup CNDA cn_object w refcnt %p %i\n", V1, (V1->ob_refcnt));
+385             Py_XDECREF(V1);
+386         }
+387         //std::cerr << "cleanup done" << py_V1 << "\n";
+388         
+389     {Py_XDECREF(py_V1);}
+390     
+391 double __DUMMY_2;
+392 
+393 }
+394 
+395             
+396         if (__failure) {
+397             // When there is a failure, this code puts the exception
+398             // in __ERROR.
+399             PyObject* err_type = NULL;
+400             PyObject* err_msg = NULL;
+401             PyObject* err_traceback = NULL;
+402             PyErr_Fetch(&err_type, &err_msg, &err_traceback);
+403             if (!err_type) {err_type = Py_None;Py_INCREF(Py_None);}
+404             if (!err_msg) {err_msg = Py_None; Py_INCREF(Py_None);}
+405             if (!err_traceback) {err_traceback = Py_None; Py_INCREF(Py_None);}
+406             PyObject* old_err_type = PyList_GET_ITEM(__ERROR, 0);
+407             PyObject* old_err_msg = PyList_GET_ITEM(__ERROR, 1);
+408             PyObject* old_err_traceback = PyList_GET_ITEM(__ERROR, 2);
+409             PyList_SET_ITEM(__ERROR, 0, err_type);
+410             PyList_SET_ITEM(__ERROR, 1, err_msg);
+411             PyList_SET_ITEM(__ERROR, 2, err_traceback);
+412             {Py_XDECREF(old_err_type);}
+413             {Py_XDECREF(old_err_msg);}
+414             {Py_XDECREF(old_err_traceback);}
+415         }
+416         // The failure code is returned to index what code block failed.
+417         return __failure;
+418         
+419         }
+420     };
+421     }
+422     
+423 
+424         static int __struct_compiled_op_m35c6a38a16821f008e4bc5bbfd89a1ce_executor(__struct_compiled_op_m35c6a38a16821f008e4bc5bbfd89a1ce *self) {
+425             return self->run();
+426         }
+427 
+428         static void __struct_compiled_op_m35c6a38a16821f008e4bc5bbfd89a1ce_destructor(PyObject *capsule) {
+429             __struct_compiled_op_m35c6a38a16821f008e4bc5bbfd89a1ce *self = (__struct_compiled_op_m35c6a38a16821f008e4bc5bbfd89a1ce *)PyCapsule_GetContext(capsule);
+430             delete self;
+431         }
+432         
+433 //////////////////////
+434 ////  Functions
+435 //////////////////////
+436 static PyObject * instantiate(PyObject * self, PyObject *argtuple) {
+437   assert(PyTuple_Check(argtuple));
+438   if (3 != PyTuple_Size(argtuple)){ 
+439      PyErr_Format(PyExc_TypeError, "Wrong number of arguments, expected 3, got %i", (int)PyTuple_Size(argtuple));
+440      return NULL;
+441   }
+442   __struct_compiled_op_m35c6a38a16821f008e4bc5bbfd89a1ce* struct_ptr = new __struct_compiled_op_m35c6a38a16821f008e4bc5bbfd89a1ce();
+443   if (struct_ptr->init( PyTuple_GET_ITEM(argtuple, 0),PyTuple_GET_ITEM(argtuple, 1),PyTuple_GET_ITEM(argtuple, 2) ) != 0) {
+444     delete struct_ptr;
+445     return NULL;
+446   }
+447     PyObject* thunk = PyCapsule_New((void*)(&__struct_compiled_op_m35c6a38a16821f008e4bc5bbfd89a1ce_executor), NULL, __struct_compiled_op_m35c6a38a16821f008e4bc5bbfd89a1ce_destructor);
+448     if (thunk != NULL && PyCapsule_SetContext(thunk, struct_ptr) != 0) {
+449         PyErr_Clear();
+450         Py_DECREF(thunk);
+451         thunk = NULL;
+452     }
+453 
+454   return thunk; }
+455 
+456 /////////
+/////////////
+457 ////  Module init
+458 //////////////////////
+['/usr/local/cuda-8.0/bin/nvcc', '-shared', '-O3', '--maxrregcount=32', '-use_fast_math', '-arch=sm_61', '-m64', '-Xcompiler', '-fno-math-errno,-Wno-unused-label,-Wno-unused-variable,-Wno-write-strings,-D_FORCE_INLINES,-DCUDA_NDARRAY_CUH=mc72d035fdf91890f3b36710688069b2e,-DNPY_NO_DEPRECATED_API=NPY_1_7_API_VERSION,-fPIC,-fvisibility=hidden', '-Xlinker', '-rpath,/home/sumeyer/.theano/compiledir_Linux-4.4--generic-x86_64-with-debian-stretch-sid-x86_64-3.5.2-64/cuda_ndarray', '-I/home/sumeyer/.theano/compiledir_Linux-4.4--generic-x86_64-with-debian-stretch-sid-x86_64-3.5.2-64/cuda_ndarray', '-I/usr/local/cuda-8.0/include', '-I/home/sumeyer/anaconda3/envs/tfGPU/lib/python3.5/site-packages/numpy/core/include', '-I/home/sumeyer/anaconda3/envs/tfGPU/include/python3.5m', '-I/home/sumeyer/anaconda3/envs/tfGPU/lib/python3.5/site-packages/theano/gof', '-I/home/sumeyer/anaconda3/envs/tfGPU/lib/python3.5/site-packages/theano/sandbox/cuda', '-L/home/sumeyer/.theano/compiledir_Linux-4.4--generic-x86_64-with-debian-stretch-sid-x86_64-3.5.2-64/cuda_ndarray', '-L/home/sumeyer/anaconda3/envs/tfGPU/lib', '-o', '/home/sumeyer/.theano/compiledir_Linux-4.4--generic-x86_64-with-debian-stretch-sid-x86_64-3.5.2-64/tmp_rxwdbyh/m35c6a38a16821f008e4bc5bbfd89a1ce.so', 'mod.cu', '-lcudart', '-lcublas', '-lcuda_ndarray', '-lpython3.5m']
+459 static PyMethodDef MyMethods[] = {
+460 	{"instantiate", instantiate, METH_VARARGS, "undocumented"} ,
+461 	{NULL, NULL, 0, NULL}
+462 };
+463 static struct PyModuleDef moduledef = {
+464       PyModuleDef_HEAD_INIT,
+465       "m35c6a38a16821f008e4bc5bbfd89a1ce",
+466       NULL,
+467       -1,
+468       MyMethods,
+469 };
+470 
+471 PyMODINIT_FUNC PyInit_m35c6a38a16821f008e4bc5bbfd89a1ce(void) {
+472     PyObject *m = PyModule_Create(&moduledef);
+473     return m;
+474 }
+475 
+===============================
+In file included from mod.cu:4:0:
+/home/sumeyer/anaconda3/envs/tfGPU/lib/python3.5/site-packages/theano/sandbox/cuda/cuda_ndarray.cuh:17:0: warning: "PyString_Check" redefined
+ #define PyString_Check PyUnicode_Check
+ ^
+In file included from /home/sumeyer/anaconda3/envs/tfGPU/lib/python3.5/site-packages/theano/sandbox/cuda/cuda_ndarray.cuh:11:0,
+                 from mod.cu:4:
+/home/sumeyer/anaconda3/envs/tfGPU/lib/python3.5/site-packages/numpy/core/include/numpy/npy_3kcompat.h:63:0: note: this is the location of the previous definition
+ #define PyString_Check PyBytes_Check
+ ^
+In file included from mod.cu:4:0:
+/home/sumeyer/anaconda3/envs/tfGPU/lib/python3.5/site-packages/theano/sandbox/cuda/cuda_ndarray.cuh:18:0: warning: "PyString_FromString" redefined
+ #define PyString_FromString PyUnicode_FromString
+ ^
+In file included from /home/sumeyer/anaconda3/envs/tfGPU/lib/python3.5/site-packages/theano/sandbox/cuda/cuda_ndarray.cuh:11:0,
+                 from mod.cu:4:
+/home/sumeyer/anaconda3/envs/tfGPU/lib/python3.5/site-packages/numpy/core/include/numpy/npy_3kcompat.h:65:0: note: this is the location of the previous definition
+ #define PyString_FromString PyBytes_FromString
+ ^
+In file included from mod.cu:4:0:
+/home/sumeyer/anaconda3/envs/tfGPU/lib/python3.5/site-packages/theano/sandbox/cuda/cuda_ndarray.cuh:19:0: warning: "PyString_AsString" redefined
+ #define PyString_AsString PyUnicode_AsUTF8
+ ^
+In file included from /home/sumeyer/anaconda3/envs/tfGPU/lib/python3.5/site-packages/theano/sandbox/cuda/cuda_ndarray.cuh:11:0,
+                 from mod.cu:4:
+/home/sumeyer/anaconda3/envs/tfGPU/lib/python3.5/site-packages/numpy/core/include/numpy/npy_3kcompat.h:72:0: note: this is the location of the previous definition
+ #define PyString_AsString PyBytes_AsString
+ ^
+In file included from mod.cu:4:0:
+/home/sumeyer/anaconda3/envs/tfGPU/lib/python3.5/site-packages/theano/sandbox/cuda/cuda_ndarray.cuh:20:0: warning: "PyString_FromStringAndSize" redefined
+ #define PyString_FromStringAndSize PyUnicode_FromStringAndSize
+ ^
+In file included from /home/sumeyer/anaconda3/envs/tfGPU/lib/python3.5/site-packages/theano/sandbox/cuda/cuda_ndarray.cuh:11:0,
+                 from mod.cu:4:
+/home/sumeyer/anaconda3/envs/tfGPU/lib/python3.5/site-packages/numpy/core/include/numpy/npy_3kcompat.h:66:0: note: this is the location of the previous definition
+ #define PyString_FromStringAndSize PyBytes_FromStringAndSize
+ ^
+In file included from mod.cu:4:0:
+/home/sumeyer/anaconda3/envs/tfGPU/lib/python3.5/site-packages/theano/sandbox/cuda/cuda_ndarray.cuh:21:0: warning: "PyString_Size" redefined
+ #define PyString_Size PyUnicode_GET_SIZE
+ ^
+In file included from /home/sumeyer/anaconda3/envs/tfGPU/lib/python3.5/site-packages/theano/sandbox/cuda/cuda_ndarray.cuh:11:0,
+                 from mod.cu:4:
+/home/sumeyer/anaconda3/envs/tfGPU/lib/python3.5/site-packages/numpy/core/include/numpy/npy_3kcompat.h:74:0: note: this is the location of the previous definition
+ #define PyString_Size PyBytes_Size
+ ^
+mod.cu(298): error: identifier "callkernel_node_m35c6a38a16821f008e4bc5bbfd89a1ce_0" is undefined
+1 error detected in the compilation of "/tmp/tmpxft_00001534_00000000-9_mod.cpp1.ii".
+Traceback (most recent call last):
+  File "/home/sumeyer/PycharmProjects/keras/MLM_code/chapter_07/first_mlp.py", line 21, in <module>
+    model.fit(X, Y, nb_epoch=150, batch_size=10)
+  File "/home/sumeyer/anaconda3/envs/tfGPU/lib/python3.5/site-packages/keras/models.py", line 672, in fit
+    initial_epoch=initial_epoch)
+  File "/home/sumeyer/anaconda3/envs/tfGPU/lib/python3.5/site-packages/keras/engine/training.py", line 1164, in fit
+    self._make_train_function()
+  File "/home/sumeyer/anaconda3/envs/tfGPU/lib/python3.5/site-packages/keras/engine/training.py", line 768, in _make_train_function
+    **self._function_kwargs)
+  File "/home/sumeyer/anaconda3/envs/tfGPU/lib/python3.5/site-packages/keras/backend/theano_backend.py", line 969, in function
+    return Function(inputs, outputs, updates=updates, **kwargs)
+  File "/home/sumeyer/anaconda3/envs/tfGPU/lib/python3.5/site-packages/keras/backend/theano_backend.py", line 955, in __init__
+    **kwargs)
+  File "/home/sumeyer/anaconda3/envs/tfGPU/lib/python3.5/site-packages/theano/compile/function.py", line 326, in function
+    output_keys=output_keys)
+  File "/home/sumeyer/anaconda3/envs/tfGPU/lib/python3.5/site-packages/theano/compile/pfunc.py", line 486, in pfunc
+    output_keys=output_keys)
+  File "/home/sumeyer/anaconda3/envs/tfGPU/lib/python3.5/site-packages/theano/compile/function_module.py", line 1784, in orig_function
+    defaults)
+  File "/home/sumeyer/anaconda3/envs/tfGPU/lib/python3.5/site-packages/theano/compile/function_module.py", line 1651, in create
+    input_storage=input_storage_lists, storage_map=storage_map)
+  File "/home/sumeyer/anaconda3/envs/tfGPU/lib/python3.5/site-packages/theano/gof/link.py", line 699, in make_thunk
+    storage_map=storage_map)[:3]
+  File "/home/sumeyer/anaconda3/envs/tfGPU/lib/python3.5/site-packages/theano/gof/vm.py", line 1063, in make_all
+    impl=impl))
+  File "/home/sumeyer/anaconda3/envs/tfGPU/lib/python3.5/site-packages/theano/gof/op.py", line 924, in make_thunk
+    no_recycling)
+  File "/home/sumeyer/anaconda3/envs/tfGPU/lib/python3.5/site-packages/theano/gof/op.py", line 828, in make_c_thunk
+    output_storage=node_output_storage)
+  File "/home/sumeyer/anaconda3/envs/tfGPU/lib/python3.5/site-packages/theano/gof/cc.py", line 1190, in make_thunk
+    keep_lock=keep_lock)
+  File "/home/sumeyer/anaconda3/envs/tfGPU/lib/python3.5/site-packages/theano/gof/cc.py", line 1131, in __compile__
+    keep_lock=keep_lock)
+  File "/home/sumeyer/anaconda3/envs/tfGPU/lib/python3.5/site-packages/theano/gof/cc.py", line 1589, in cthunk_factory
+    key=key, lnk=self, keep_lock=keep_lock)
+  File "/home/sumeyer/anaconda3/envs/tfGPU/lib/python3.5/site-packages/theano/gof/cmodule.py", line 1155, in module_from_key
+    module = lnk.compile_cmodule(location)
+  File "/home/sumeyer/anaconda3/envs/tfGPU/lib/python3.5/site-packages/theano/gof/cc.py", line 1492, in compile_cmodule
+    preargs=preargs)
+  File "/home/sumeyer/anaconda3/envs/tfGPU/lib/python3.5/site-packages/theano/sandbox/cuda/nvcc_compiler.py", line 390, in compile_str
+    'for cmd', ' '.join(cmd))
+Exception: ('The following error happened while compiling the node', GpuElemwise{RoundHalfToEven}[(0, 0)](GpuElemwise{Composite{scalar_sigmoid((i0 + i1))}}[(0, 0)].0), '\n', 'nvcc return status', 2, 'for cmd', '/usr/local/cuda-8.0/bin/nvcc -shared -O3 --maxrregcount=32 -use_fast_math -arch=sm_61 -m64 -Xcompiler -fno-math-errno,-Wno-unused-label,-Wno-unused-variable,-Wno-write-strings,-D_FORCE_INLINES,-DCUDA_NDARRAY_CUH=mc72d035fdf91890f3b36710688069b2e,-DNPY_NO_DEPRECATED_API=NPY_1_7_API_VERSION,-fPIC,-fvisibility=hidden -Xlinker -rpath,/home/sumeyer/.theano/compiledir_Linux-4.4--generic-x86_64-with-debian-stretch-sid-x86_64-3.5.2-64/cuda_ndarray -I/home/sumeyer/.theano/compiledir_Linux-4.4--generic-x86_64-with-debian-stretch-sid-x86_64-3.5.2-64/cuda_ndarray -I/usr/local/cuda-8.0/include -I/home/sumeyer/anaconda3/envs/tfGPU/lib/python3.5/site-packages/numpy/core/include -I/home/sumeyer/anaconda3/envs/tfGPU/include/python3.5m -I/home/sumeyer/anaconda3/envs/tfGPU/lib/python3.5/site-packages/theano/gof -I/home/sumeyer/anaconda3/envs/tfGPU/lib/python3.5/site-packages/theano/sandbox/cuda -L/home/sumeyer/.theano/compiledir_Linux-4.4--generic-x86_64-with-debian-stretch-sid-x86_64-3.5.2-64/cuda_ndarray -L/home/sumeyer/anaconda3/envs/tfGPU/lib -o /home/sumeyer/.theano/compiledir_Linux-4.4--generic-x86_64-with-debian-stretch-sid-x86_64-3.5.2-64/tmp_rxwdbyh/m35c6a38a16821f008e4bc5bbfd89a1ce.so mod.cu -lcudart -lcublas -lcuda_ndarray -lpython3.5m', '[GpuElemwise{RoundHalfToEven}[(0, 0)](<CudaNdarrayType(float32, matrix)>)]')
+
+Process finished with exit code 1
+
