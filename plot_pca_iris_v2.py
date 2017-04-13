@@ -35,6 +35,7 @@ pca = decomposition.PCA(n_components=3)
 pca.fit(X)
 X = pca.transform(X)
 
+print(X)
 
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D

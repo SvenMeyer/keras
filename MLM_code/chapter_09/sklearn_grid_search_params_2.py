@@ -6,16 +6,6 @@ from sklearn.model_selection import GridSearchCV
 import numpy
 import time
 
-# Fix for bug in keras 0.12.1
-# http://stackoverflow.com/questions/41796618/python-keras-cross-val-score-error/41841066#41841066
-from keras.wrappers.scikit_learn import BaseWrapper
-import copy
-def custom_get_params(self, **params):
-    res = copy.deepcopy(self.sk_params)
-    res.update({'build_fn': self.build_fn})
-    return res
-BaseWrapper.get_params = custom_get_params
-
 # Function to create model, required for KerasClassifier
 def create_model(optimizer='rmsprop', init='glorot_uniform'):
 	# create model

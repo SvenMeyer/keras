@@ -1,7 +1,13 @@
+import theano.sandbox.cuda
+theano.sandbox.cuda.use('cpu')
+
 from theano import function, config, shared, sandbox
 import theano.tensor as T
 import numpy
 import time
+
+import theano
+print("theano version     = ", theano.__version__)
 
 vlen = 10 * 30 * 768  # 10 x #cores x # threads per core
 iters = 1000

@@ -98,3 +98,5 @@ print("results.mean: %.2f%% , results.std: %.2f%%" % (results.mean()*100, result
 # 500 epoch
 # DONE in  126.33978400000001 sec
 # Hidden: 81.09% (7.91%)
+
+

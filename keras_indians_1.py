@@ -18,7 +18,7 @@ np.random.seed(seed)
 
 import os
 home = os.path.expanduser("~")
-dir = "/MLdata/test/"
+dir = "/ML_DATA/MLM/pima-indians/"
 filename = "pima-indians-diabetes.csv"
 datafile = home + dir + filename
 
@@ -35,11 +35,11 @@ print(X)
 
 result_log = [] # empty list to log processing results
 
-start = time.clock()
+start = time.time()
 pca = decomposition.PCA()
 pca.fit(X)
 X_pca = pca.transform(X)
-time_pca = (time.clock() - start)
+time_pca = (time.time() - start)
 print("time PCA = ", time_pca)
 
 
@@ -53,16 +53,12 @@ for n_components in range(1, X_cols+1):
     model.add(Dense(1, init='uniform', activation='sigmoid'))
 
     # Compile model
-    print("start model.compile ..."),
-    start = time.clock()
     model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
-    time_compile = (time.clock() - start)
-    print("DONE in ", time_compile, "sec")
 
     # Fit the model
     print("start model.fit ..."),
     model.fit(X_pca[:,:n_components], Y, nb_epoch=150, batch_size=10, verbose=0)
-    time_fit = (time.clock() - start)
+    time_fit = (time.time() - start)
     print("DONE in ", time_fit, "sec")
 
     # evaluate the model
@@ -77,11 +73,7 @@ for n_components in range(1, X_cols+1):
     print()
     print(rounded)
 
-    result_log.append((n_components, time_compile, time_fit, scores[1]*100))
-
-# print("-----------")
-# for r in result_log:
-#    print(r)
+    result_log.append((n_components, time_fit, scores[1]*100))
 
 print("-----------")
 

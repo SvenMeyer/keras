@@ -1,4 +1,10 @@
 # Create first network with Keras
+
+import matplotlib
+# matplotlib.use('Agg')
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+
 from keras.models import Sequential
 from keras.layers import Dense
 import numpy as np
@@ -6,11 +12,7 @@ import pandas as pd
 import math
 import time
 
-from mpl_toolkits.mplot3d import Axes3D
-
-
 from sklearn import decomposition
-from sklearn import datasets
 
 # fix random seed for reproducibility
 seed = 7
@@ -18,9 +20,9 @@ np.random.seed(seed)
 
 import os
 home = os.path.expanduser("~")
-dir = "/MLdata/test/"
+dir_path = "/ML_DATA/MLM/pima-indians/"
 filename = "pima-indians-diabetes.csv"
-datafile = home + dir + filename
+datafile = home + dir_path + filename
 
 print("loading file : ", datafile),
 dataset = np.loadtxt(datafile, delimiter=",")
@@ -35,17 +37,16 @@ print(X)
 
 result_log = [] # empty list to log processing results
 
-start = time.clock()
+start = time.time()
 pca = decomposition.PCA()
 pca.fit(X)
 X_pca = pca.transform(X)
-time_pca = (time.clock() - start)
+time_pca = (time.time() - start)
 print("time PCA = ", time_pca)
 
 
 # draw first 3 components in 3D
-import matplotlib.pyplot as plt
-from mpl_toolkits.mplot3d import Axes3D
+
 
 y = Y
 y = Y.astype(np.int)
@@ -59,7 +60,7 @@ ax = Axes3D(fig, rect=[0, 0, .95, 1], elev=48, azim=134)
 
 plt.cla()
 
-for name, label in [('PCA_0', 0), ('PCA_1', 1), ('PCA_2', 2)]:
+for name, label in [('PCA_0', 0), ('PCA_1', 1)]: #, ('PCA_2', 2)]:
     print(X_pca[y == label, 0].mean())
 
 for name, label in [('value_0', 0), ('value_1', 1)]: # number of classes

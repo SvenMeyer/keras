@@ -1,9 +1,11 @@
 # MLP for Pima Indians Dataset with grid search via sklearn
 import numpy
 
-processor = 'cpu'
-# processor = 'gpu'
+# processor = 'cpu'
+processor = 'gpu'
 
+# Theano stuff here
+'''
 import theano.sandbox.cuda
 theano.sandbox.cuda.use(processor)
 
@@ -17,6 +19,10 @@ rng = numpy.random.RandomState(22)
 x = theano.shared(numpy.asarray(rng.rand(vlen), config.floatX))
 f = theano.function([], T.exp(x))
 print(f.maker.fgraph.toposort())
+'''
+
+import tensorflow as tf
+print("tensorflow.__version__ = ", tf.__version__)
 
 from keras.models import Sequential
 from keras.layers import Dense
@@ -34,9 +40,9 @@ print("keras version      = ", keras.__version__)
 def create_model(optimizer='rmsprop', init='glorot_uniform'):
 	# create model
 	model = Sequential()
-	model.add(Dense(12, input_dim=8, init=init, activation='relu'))
-	model.add(Dense(8, init=init, activation='relu'))
-	model.add(Dense(1, init=init, activation='sigmoid'))
+	model.add(Dense(12, input_dim=8, kernel_initializer=init, activation='relu'))
+	model.add(Dense(8, kernel_initializer=init, activation='relu'))
+	model.add(Dense(1, kernel_initializer=init, activation='sigmoid'))
 	# Compile model
 	model.compile(loss='binary_crossentropy', optimizer=optimizer, metrics=['accuracy'])
 	return model
@@ -54,10 +60,8 @@ model = KerasClassifier(build_fn=create_model, verbose=0)
 # grid search epochs, batch size and optimizer
 optimizers = ['rmsprop', 'adam']
 init = ['glorot_uniform', 'normal', 'uniform']
-epochs = [400, 500, 600]
+epochs  = [50, 100, 150]
 batches = [10, 20, 30]
-epochs = [100]
-batches = [5]
 param_grid = dict(optimizer=optimizers, nb_epoch=epochs, batch_size=batches, init=init)
 
 n_jobs = 8 if processor == 'cpu' else 1
@@ -103,3 +107,19 @@ for mean, stdev, param in zip(means, stds, params):
 # keras 1.2.2
 # DONE in  182.50592589378357 sec
 # Best: 0.761719 using {'batch_size': 10, 'init': 'uniform', 'nb_epoch': 600, 'optimizer': 'adam'}
+
+# GPU Tensorflow 0.12.1
+# epochs = [50]
+# batches = [10]
+# epochs = [100]
+# batches = [5]
+# DONE in  506.75493478775024 sec
+# Best: 0.739583 using {'batch_size': 5, 'nb_epoch': 100, 'optimizer': 'adam', 'init': 'normal'}
+
+# GPU Tensorflow 1.0.0rc1
+# DONE in  500.74833512306213 sec
+# Best: 0.739583 using {'optimizer': 'adam', 'nb_epoch': 100, 'init': 'normal', 'batch_size': 5}
+
+# GPU Tensorflow 1.0.0
+# DONE in  493.63156175613403 sec
+# Best: 0.739583 using {'init': 'normal', 'optimizer': 'adam', 'nb_epoch': 100, 'batch_size': 5}
